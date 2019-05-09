@@ -13,11 +13,12 @@ const appendTheEnd = (str) => {
   return ending;
 };
 
-const appendTheEnd = (str) => {
-    const ending = str.concat(' The end.')
-    return ending;
-}
+// const appendTheEnd = (str) => {
+//     const ending = str.concat(' The end.')
+//     return ending;
+// }
 
+// return str + ' The end.';
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
