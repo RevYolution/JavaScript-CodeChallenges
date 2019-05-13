@@ -17,6 +17,11 @@ const isNum = (input) => {
   return containsNum.test(input);
 };
 
+// const isNum = (input) => {
+//     return /\d/.test(input);
+
+// };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -26,10 +31,27 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-    let cap = /\b[A-Z].?\b\w+/g;
-  return str.match(cap);
-  
+    
+    return str.match(/\b[A-Z]\w*/g) || [];
+
 };
+
+// const isCapitalized = (str) => {
+//     const matches = str.match(/\b[A-Z]\w*/g);
+
+//     return matches || [];
+
+// };
+
+// const isCapitalized = (str) => {
+//     const matches = str.match(/\b[A-Z]\w*/g);
+
+//     if (matches === null) {
+//         return [];
+//     } else {
+//         return matches;
+//     }
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -76,7 +98,10 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-  return str.match(/\b[A-Z]*[a-z]*)+\s\b/g);
+//   return str.match(/\b[A-Z]*[a-z]*[0-9]*\s\b/g);
+
+  let arr = str.match(/\b(\w+)\s/g);
+ return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -183,7 +208,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia vel massa sed egestas. Nunc faucibus iaculis elit, a scelerisque enim condimentum sed. Aenean ac scelerisque sem, et pharetra diam.';
 
   test('It should only return words that are immediately followed by a space', () => {
