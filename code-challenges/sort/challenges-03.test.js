@@ -183,6 +183,8 @@ function Meeting(dayOfWeek, start, end) {
   this.start = start;
   this.end = end;
 }
+let meetingDay = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
 const meetings = [
   new Meeting('Monday', '0900', '1000'),
   new Meeting('Wednesday', '1300', '1500'),
@@ -193,7 +195,10 @@ const meetings = [
 ];
 
 const sortMeetingsByDay = (arr) => {
-  // Solution code here...
+  arr.sort((a,b) => {
+    return meetingDay.indexOf(a.meetingDay) - meetingDay.indexOf(b.meetingDay);
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -316,7 +321,7 @@ describe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should sort meetings by the day on which they happen', () => {
     const sortedMeetings = sortMeetingsByDay(meetings);
     expect(sortedMeetings.slice(0,2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
