@@ -22,6 +22,14 @@ const howMuchPencil = (str) => {
   return result;
 };
 
+// const howMuchPencil = (str) => {
+//   let result = [];
+//     str.forEach(letter => {
+//     result.push(letter.slice(''));
+//   });
+//   return result;
+// };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -133,9 +141,13 @@ For example:
   removeEvenValues(integers);
   console.log(integers) will print [1, 3, 5]
 ------------------------------------------------------------------------------------------------ */
-
+// Starting at the end of the array -1 gives the last index. Go through the arry backwards. If the value at i is divisible by 2 slice out that index. 
 const removeEvenValues = (arr) => {
-  
+  for ( let i = arr.length-1; i >= 0; i--) {
+    if ( arr[i] % 2 === 0) {
+      arr.splice(i, 1);
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -154,7 +166,11 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
-  // Solution code here...
+  if (numberOfCharacters < 0) {
+    return str;
+  } else {
+    return str.slice(0, -1 * numberOfCharacters);
+  }
 };
 
 
@@ -259,7 +275,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should shorten the string based on the first argument', () => {
     expect(removeLastCharacters('Gregor', 2)).toStrictEqual('Greg');
     expect(removeLastCharacters('Gregor', 2).length).toStrictEqual(4);
